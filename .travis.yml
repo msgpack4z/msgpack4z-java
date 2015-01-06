@@ -9,4 +9,9 @@ jdk:
 script:
   - git config core.whitespace tab-in-indent,trailing-space,space-before-tab,cr-at-eol
   - git show --oneline --check
-  - sbt test
+  - sbt test $(if [[ "${TRAVIS_PULL_REQUEST}" == "false" && ${JAVA_HOME} == $(jdk_switcher home oraclejdk7) && "${TRAVIS_BRANCH}" == "master" ]]; then echo "publish"; fi)
+
+env:
+  global:
+  - secure: eHuJhzG1PrlpU5b/LaUx8DbmpEwErq74DUL5sn5woQGVWdwadtf0575ga+2p+W2mHhV/JJpdNW+IWYgN0rYU87Ey7GTwVTsFUn0URq4+2XybjNu6sH65o8kcII7D7d+2XkFZrUEK9hJTbJA/f2uFfXu97+wTptDngG2nOt/A+tQ=
+  - secure: FIGQwQSCBkaMD9DbdWnyUm2JUW+77afN0P/lnK5rl3PThYbLzkjW3DpVw6MNorAm9pL3vxbrPSo/Z/mOPBza0pt/PhdgodG0YHrzQk2O/3QSR6VFPof+ZYFC57EYZADzNI+n/EWCMsONc3Cpf1m9XPryDXqbfh/P8jRI6TY84Ac=
