@@ -23,7 +23,7 @@ object build extends Build {
     javacOptions in compile ++= Seq("-target", "6", "-source", "6"),
     commands += Command.command("updateReadme")(UpdateReadme.updateReadmeTask),
     libraryDependencies ++= (
-      ("org.msgpack" % "msgpack-core" % "0.7.0-p2") ::
+      ("org.msgpack" % "msgpack-core" % "0.7.0-p3") ::
       ("com.github.xuwei-k" % "msgpack4z-api" % "0.1.0") ::
       Nil
     ),
