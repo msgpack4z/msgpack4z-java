@@ -5,7 +5,7 @@ object UpdateReadme {
 
   private val sonatypeURL = "https://oss.sonatype.org/service/local/repositories/"
 
-  val updateReadmeProcess: ReleaseStep = updateReadmeTask
+  lazy val updateReadmeProcess: ReleaseStep = updateReadmeTask
 
   val updateReadmeTask = { state: State =>
     val extracted = Project.extract(state)
