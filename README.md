@@ -7,6 +7,17 @@
 - <http://msgpack.org/>
 - <https://github.com/msgpack/msgpack/blob/master/spec.md>
 
+### latest stable version
+
 ```scala
 libraryDependencies += "com.github.xuwei-k" % "msgpack4z-java07" % "0.1.3"
+```
+
+
+### snapshot version
+
+```scala
+resolvers += Opts.resolver.sonatypeSnapshots
+
+libraryDependencies += "com.github.xuwei-k" % "msgpack4z-java07" % "0.1.4-SNAPSHOT"
 ```
