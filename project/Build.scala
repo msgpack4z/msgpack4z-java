@@ -64,7 +64,7 @@ object build extends Build {
       "-Ywarn-unused-import" ::
       Nil
     ),
-    scalaVersion := "2.11.6",
+    scalaVersion := "2.11.7",
     crossScalaVersions := scalaVersion.value :: Nil,
     pomExtra :=
       <developers>
