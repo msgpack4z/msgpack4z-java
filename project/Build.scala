@@ -41,6 +41,9 @@ object build extends Build {
       setNextVersion,
       commitNextVersion,
       UpdateReadme.updateReadmeProcess,
+      ReleaseStep(state =>
+        Project.extract(state).runTask(SonatypeKeys.sonatypeReleaseAll, state)._1
+      ),
       pushChanges
     ),
     credentials ++= PartialFunction.condOpt(sys.env.get("SONATYPE_USER") -> sys.env.get("SONATYPE_PASS")){
