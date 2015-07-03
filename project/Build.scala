@@ -63,11 +63,6 @@ object build extends Build {
       "-language:implicitConversions" ::
       Nil
     ),
-    scalacOptions in compile ++= (
-      "-Ywarn-unused" ::
-      "-Ywarn-unused-import" ::
-      Nil
-    ),
     scalaVersion := "2.11.7",
     crossScalaVersions := scalaVersion.value :: Nil,
     pomExtra :=
