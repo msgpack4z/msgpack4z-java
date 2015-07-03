@@ -1,5 +1,6 @@
 import sbt._, Keys._
 import sbtrelease._
+import sbtrelease.ReleasePlugin.autoImport._
 import xerial.sbt.Sonatype._
 import ReleaseStateTransformations._
 import com.typesafe.sbt.pgp.PgpKeys
@@ -15,7 +16,7 @@ object build extends Build {
   val modules = msgpack4zJava07Name :: Nil
 
   lazy val msgpack4zJava07 = Project("msgpack4z-java07", file(".")).settings(
-    ReleasePlugin.releaseSettings ++ ReleasePlugin.extraReleaseCommands ++ sonatypeSettings: _*
+    ReleasePlugin.extraReleaseCommands ++ sonatypeSettings: _*
   ).settings(
     autoScalaLibrary := false,
     crossPaths := false,
@@ -28,7 +29,7 @@ object build extends Build {
       ("com.github.xuwei-k" % "msgpack4z-api" % "0.1.0") ::
       Nil
     ),
-    ReleasePlugin.ReleaseKeys.releaseProcess := Seq[ReleaseStep](
+    releaseProcess := Seq[ReleaseStep](
       checkSnapshotDependencies,
       inquireVersions,
       runClean,
