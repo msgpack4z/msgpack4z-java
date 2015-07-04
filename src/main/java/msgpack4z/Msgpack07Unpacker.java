@@ -39,7 +39,7 @@ public class Msgpack07Unpacker implements MsgUnpacker {
                 return MsgType.ARRAY;
             case MAP:
                 return MsgType.MAP;
-            case EXTENDED:
+            case EXTENSION:
                 return MsgType.EXTENDED;
             default:
                 throw new RuntimeException("impossible");
