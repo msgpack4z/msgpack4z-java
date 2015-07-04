@@ -19,5 +19,5 @@ libraryDependencies += "com.github.xuwei-k" % "msgpack4z-java07" % "0.1.4"
 ```scala
 resolvers += Opts.resolver.sonatypeSnapshots
 
-libraryDependencies += "com.github.xuwei-k" % "msgpack4z-java07" % "0.1.4-SNAPSHOT"
+libraryDependencies += "com.github.xuwei-k" % "msgpack4z-java07" % "0.1.5-SNAPSHOT"
 ```
