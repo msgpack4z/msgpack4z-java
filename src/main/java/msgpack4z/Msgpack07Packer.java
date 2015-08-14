@@ -1,10 +1,11 @@
 package msgpack4z;
 
-import org.msgpack.core.MessagePack;
-import org.msgpack.core.MessagePacker;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.math.BigInteger;
+
+import org.msgpack.core.MessagePack;
+import org.msgpack.core.MessagePacker;
 
 public class Msgpack07Packer implements MsgPacker {
     private final MessagePacker self;
@@ -96,8 +97,14 @@ public class Msgpack07Packer implements MsgPacker {
     }
 
     @Override
+    public void packExtensionTypeHeader(byte extType, int payloadLen) throws IOException {
+      self.packExtensionTypeHeader(extType, payloadLen);
+    }
+
+    @Override
     public byte[] result() throws IOException {
         self.close();
         return out.toByteArray();
     }
+
 }
