@@ -136,6 +136,11 @@ public class Msgpack07Unpacker implements MsgUnpacker {
     }
 
     @Override
+    public void readPayload(byte[] destination) throws IOException {
+        unpacker.readPayload(destination);
+    }
+
+    @Override
     public void close() throws IOException {
         unpacker.close();
     }
