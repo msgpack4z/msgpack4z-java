@@ -1,10 +1,11 @@
 package msgpack4z;
 
+import java.io.IOException;
+import java.math.BigInteger;
+
 import org.msgpack.core.MessagePack;
 import org.msgpack.core.MessageUnpacker;
 import org.msgpack.value.ValueType;
-import java.io.IOException;
-import java.math.BigInteger;
 
 public class Msgpack07Unpacker implements MsgUnpacker {
     private final MessageUnpacker unpacker;
@@ -126,6 +127,17 @@ public class Msgpack07Unpacker implements MsgUnpacker {
         final byte[] bytes = new byte[unpacker.unpackBinaryHeader()];
         unpacker.readPayload(bytes);
         return bytes;
+    }
+
+    @Override
+    public ExtensionTypeHeader unpackExtensionType() throws IOException {
+      org.msgpack.core.ExtensionTypeHeader ext = unpacker.unpackExtensionTypeHeader();
+      return new ExtensionTypeHeader(ext.getType(), ext.getLength());
+    }
+
+    @Override
+    public void readPayload(byte[] destination) throws IOException {
+        unpacker.readPayload(destination);
     }
 
     @Override
