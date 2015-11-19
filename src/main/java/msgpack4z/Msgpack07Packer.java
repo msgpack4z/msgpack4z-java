@@ -100,4 +100,14 @@ public class Msgpack07Packer implements MsgPacker {
         self.close();
         return out.toByteArray();
     }
+
+    @Override
+    public void packExtTypeHeader(byte extType, int payloadLen) throws IOException {
+        self.packExtensionTypeHeader(extType, payloadLen);
+    }
+
+    @Override
+    public void writePayload(byte[] a) throws IOException {
+        self.writePayload(a);
+    }
 }

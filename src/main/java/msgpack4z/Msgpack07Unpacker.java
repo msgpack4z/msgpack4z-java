@@ -1,5 +1,6 @@
 package msgpack4z;
 
+import org.msgpack.core.ExtensionTypeHeader;
 import org.msgpack.core.MessagePack;
 import org.msgpack.core.MessageUnpacker;
 import org.msgpack.value.ValueType;
@@ -40,7 +41,7 @@ public class Msgpack07Unpacker implements MsgUnpacker {
             case MAP:
                 return MsgType.MAP;
             case EXTENSION:
-                return MsgType.EXTENDED;
+                return MsgType.EXTENSION;
             default:
                 throw new RuntimeException("impossible");
         }
@@ -126,6 +127,22 @@ public class Msgpack07Unpacker implements MsgUnpacker {
         final byte[] bytes = new byte[unpacker.unpackBinaryHeader()];
         unpacker.readPayload(bytes);
         return bytes;
+    }
+
+    @Override
+    public byte[] readPayload(int length) throws IOException {
+        return unpacker.readPayload(length);
+    }
+
+    @Override
+    public void readPayload(byte[] a) throws IOException {
+        unpacker.readPayload(a);
+    }
+
+    @Override
+    public ExtTypeHeader unpackExtTypeHeader() throws IOException {
+        final ExtensionTypeHeader header = unpacker.unpackExtensionTypeHeader();
+        return new ExtTypeHeader(header.getType(), header.getLength());
     }
 
     @Override
