@@ -10,7 +10,7 @@
 ### latest stable version
 
 ```scala
-libraryDependencies += "com.github.xuwei-k" % "msgpack4z-java07" % "0.1.6"
+libraryDependencies += "com.github.xuwei-k" % "msgpack4z-java07" % "0.2.0"
 ```
 
 
