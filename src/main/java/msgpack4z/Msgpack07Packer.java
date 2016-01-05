@@ -2,6 +2,7 @@ package msgpack4z;
 
 import org.msgpack.core.MessagePack;
 import org.msgpack.core.MessagePacker;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -11,12 +12,12 @@ public class Msgpack07Packer implements MsgPacker {
     private final ByteArrayOutputStream out;
 
     public Msgpack07Packer() {
-        this(MessagePack.DEFAULT);
+        this(new MessagePack.PackerConfig());
     }
 
-    public Msgpack07Packer(MessagePack msgpack) {
+    public Msgpack07Packer(MessagePack.PackerConfig config) {
         this.out = new ByteArrayOutputStream();
-        this.self = msgpack.newPacker(out);
+        this.self = config.newPacker(out);
     }
 
     @Override

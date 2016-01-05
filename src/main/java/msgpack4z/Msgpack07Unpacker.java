@@ -14,12 +14,12 @@ public class Msgpack07Unpacker implements MsgUnpacker {
         this.unpacker = unpacker;
     }
 
-    public Msgpack07Unpacker(MessagePack msgpack, byte[] bytes) {
-        this(msgpack.newUnpacker(bytes));
+    public Msgpack07Unpacker(MessagePack.UnpackerConfig config, byte[] bytes) {
+        this(config.newUnpacker(bytes));
     }
 
     public static MsgUnpacker defaultUnpacker(byte[] bytes) {
-        return new Msgpack07Unpacker(MessagePack.DEFAULT, bytes);
+        return new Msgpack07Unpacker(new MessagePack.UnpackerConfig(), bytes);
     }
 
     public static MsgType toMsgType(ValueType t) {
