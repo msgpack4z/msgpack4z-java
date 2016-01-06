@@ -11,18 +11,18 @@ object build extends Build {
     sys.process.Process("git rev-parse HEAD").lines_!.head
   ).getOrElse("master")
 
-  private val msgpack4zJava07Name = "msgpack4z-java07"
+  private val msgpack4zJavaName = "msgpack4z-java"
 
-  val modules = msgpack4zJava07Name :: Nil
+  val modules = msgpack4zJavaName :: Nil
 
-  lazy val msgpack4zJava07 = Project("msgpack4z-java07", file(".")).settings(
+  lazy val msgpack4zJava = Project("msgpack4z-java", file(".")).settings(
     ReleasePlugin.extraReleaseCommands ++ sonatypeSettings: _*
   ).settings(
     resolvers += Opts.resolver.sonatypeReleases,
     fullResolvers ~= {_.filterNot(_.name == "jcenter")},
     autoScalaLibrary := false,
     crossPaths := false,
-    name := msgpack4zJava07Name,
+    name := msgpack4zJavaName,
     javacOptions in compile ++= Seq("-target", "6", "-source", "6"),
     javacOptions in (Compile, doc) ++= Seq("-locale", "en_US"),
     commands += Command.command("updateReadme")(UpdateReadme.updateReadmeTask),
@@ -76,8 +76,8 @@ object build extends Build {
         </developer>
       </developers>
       <scm>
-        <url>git@github.com:msgpack4z/msgpack4z-java07.git</url>
-        <connection>scm:git:git@github.com:msgpack4z/msgpack4z-java07.git</connection>
+        <url>git@github.com:msgpack4z/msgpack4z-java.git</url>
+        <connection>scm:git:git@github.com:msgpack4z/msgpack4z-java.git</connection>
         <tag>{if(isSnapshot.value) gitHash else { "v" + version.value }}</tag>
       </scm>
     ,

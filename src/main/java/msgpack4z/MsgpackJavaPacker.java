@@ -2,20 +2,19 @@ package msgpack4z;
 
 import org.msgpack.core.MessagePack;
 import org.msgpack.core.MessagePacker;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.math.BigInteger;
 
-public class Msgpack07Packer implements MsgPacker {
+public class MsgpackJavaPacker implements MsgPacker {
     private final MessagePacker self;
     private final ByteArrayOutputStream out;
 
-    public Msgpack07Packer() {
+    public MsgpackJavaPacker() {
         this(new MessagePack.PackerConfig());
     }
 
-    public Msgpack07Packer(MessagePack.PackerConfig config) {
+    public MsgpackJavaPacker(MessagePack.PackerConfig config) {
         this.out = new ByteArrayOutputStream();
         this.self = config.newPacker(out);
     }

@@ -7,19 +7,19 @@ import org.msgpack.value.ValueType;
 import java.io.IOException;
 import java.math.BigInteger;
 
-public class Msgpack07Unpacker implements MsgUnpacker {
+public class MsgpackJavaUnpacker implements MsgUnpacker {
     private final MessageUnpacker unpacker;
 
-    public Msgpack07Unpacker(MessageUnpacker unpacker) {
+    public MsgpackJavaUnpacker(MessageUnpacker unpacker) {
         this.unpacker = unpacker;
     }
 
-    public Msgpack07Unpacker(MessagePack.UnpackerConfig config, byte[] bytes) {
+    public MsgpackJavaUnpacker(MessagePack.UnpackerConfig config, byte[] bytes) {
         this(config.newUnpacker(bytes));
     }
 
     public static MsgUnpacker defaultUnpacker(byte[] bytes) {
-        return new Msgpack07Unpacker(new MessagePack.UnpackerConfig(), bytes);
+        return new MsgpackJavaUnpacker(new MessagePack.UnpackerConfig(), bytes);
     }
 
     public static MsgType toMsgType(ValueType t) {
