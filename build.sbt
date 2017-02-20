@@ -6,8 +6,6 @@ import build._
 
 ReleasePlugin.extraReleaseCommands
 
-sonatypeSettings
-
 resolvers += Opts.resolver.sonatypeReleases
 
 autoScalaLibrary := false
@@ -41,9 +39,7 @@ releaseProcess := Seq[ReleaseStep](
   setNextVersion,
   commitNextVersion,
   UpdateReadme.updateReadmeProcess,
-  ReleaseStep(state =>
-    Project.extract(state).runTask(SonatypeKeys.sonatypeReleaseAll, state)._1
-  ),
+  releaseStepCommand("sonatypeReleaseAll"),
   pushChanges
 )
 
