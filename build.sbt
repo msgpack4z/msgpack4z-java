@@ -64,8 +64,6 @@ scalacOptions ++= (
   Nil
 )
 
-scalaVersion := "2.11.8"
-
 crossScalaVersions := scalaVersion.value :: Nil
 
 pomExtra :=
@@ -84,3 +82,10 @@ pomExtra :=
 
 
 description := "msgpack4z"
+
+publishTo := Some(
+  if (isSnapshot.value)
+    Opts.resolver.sonatypeSnapshots
+  else
+    Opts.resolver.sonatypeStaging
+)
