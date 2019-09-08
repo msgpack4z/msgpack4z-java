@@ -6,8 +6,6 @@ import build._
 
 ReleasePlugin.extraReleaseCommands
 
-resolvers += Opts.resolver.sonatypeReleases
-
 autoScalaLibrary := false
 
 crossPaths := false
