@@ -1,7 +1,6 @@
 import sbtrelease._
 import xerial.sbt.Sonatype._
 import ReleaseStateTransformations._
-import com.typesafe.sbt.pgp.PgpKeys
 import build._
 
 ReleasePlugin.extraReleaseCommands
