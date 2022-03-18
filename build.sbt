@@ -11,9 +11,9 @@ crossPaths := false
 
 name := msgpack4zJavaName
 
-javacOptions in compile ++= Seq("-target", "6", "-source", "6")
+compile / javacOptions ++= Seq("-target", "6", "-source", "6")
 
-javacOptions in (Compile, doc) ++= Seq("-locale", "en_US")
+Compile / doc / javacOptions ++= Seq("-locale", "en_US")
 
 commands += Command.command("updateReadme")(UpdateReadme.updateReadmeTask)
 
