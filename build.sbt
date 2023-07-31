@@ -16,7 +16,7 @@ compile / javacOptions ++= Seq("-target", "8", "-source", "8")
 commands += Command.command("updateReadme")(UpdateReadme.updateReadmeTask)
 
 libraryDependencies ++= (
-  ("org.msgpack" % "msgpack-core" % "0.9.4") ::
+  ("org.msgpack" % "msgpack-core" % "0.9.5") ::
   ("com.github.xuwei-k" % "msgpack4z-api" % "0.2.0") ::
   Nil
 )
