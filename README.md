@@ -1,6 +1,6 @@
 # msgpack4z-java
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.xuwei-k/msgpack4z-java/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.xuwei-k/msgpack4z-java)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.xuwei-k/msgpack4z-java)](https://central.sonatype.com/artifact/com.github.xuwei-k/msgpack4z-java)
 [![javadoc](https://javadoc.io/badge2/com.github.xuwei-k/msgpack4z-java/javadoc.svg)](https://javadoc.io/doc/com.github.xuwei-k/msgpack4z-java)
 
 - <https://msgpack.org/>
