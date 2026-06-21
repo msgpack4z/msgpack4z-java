@@ -4,12 +4,7 @@ addSbtPlugin("com.github.sbt" % "sbt-release" % "1.5.0")
 scalacOptions ++= (
   "-deprecation" ::
   "-unchecked" ::
-  "-Xlint:-unused,_" ::
-  "-Ywarn-unused:privates,locals,implicits" ::
   "-language:existentials" ::
-  "-language:higherKinds" ::
   "-language:implicitConversions" ::
   Nil
 )
-
-fullResolvers ~= {_.filterNot(_.name == "jcenter")}
