@@ -1,5 +1,4 @@
 import sbtrelease._
-import xerial.sbt.Sonatype._
 import ReleaseStateTransformations._
 import build._
 
@@ -34,14 +33,9 @@ releaseProcess := Seq[ReleaseStep](
   setNextVersion,
   commitNextVersion,
   UpdateReadme.updateReadmeProcess,
-  releaseStepCommand("sonatypeReleaseAll"),
+  releaseStepCommand("sonaRelease"),
   pushChanges
 )
-
-credentials ++= PartialFunction.condOpt(sys.env.get("SONATYPE_USER") -> sys.env.get("SONATYPE_PASS")){
-  case (Some(user), Some(pass)) =>
-    Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", user, pass)
-}.toList
 
 organization := "com.github.xuwei-k"
 
@@ -78,9 +72,4 @@ pomExtra :=
 
 description := "msgpack4z"
 
-publishTo := Some(
-  if (isSnapshot.value)
-    Opts.resolver.sonatypeSnapshots
-  else
-    Opts.resolver.sonatypeStaging
-)
+publishTo := (if (isSnapshot.value) None else localStaging.value)
