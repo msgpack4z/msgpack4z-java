@@ -6,14 +6,14 @@ object UpdateReadme {
 
   lazy val updateReadmeProcess: ReleaseStep = updateReadmeTask
 
-  val updateReadmeTask = { state: State =>
+  val updateReadmeTask: State => State = { state =>
     val extracted = Project.extract(state)
-    val v = extracted get version
-    val org =  extracted get organization
+    val v = extracted.get(version)
+    val org = extracted.get(organization)
     val modules = build.modules
     val readme = "README.md"
     val readmeFile = file(readme)
-    val newReadme = Predef.augmentString(IO.read(readmeFile)).lines.map{ line =>
+    val newReadme = IO.readLines(readmeFile).map{ line =>
       val matchReleaseOrSnapshot = line.contains("SNAPSHOT") == v.contains("SNAPSHOT")
       if(line.startsWith("libraryDependencies") && matchReleaseOrSnapshot){
         val i = modules.indexWhere(line.contains)
@@ -21,7 +21,7 @@ object UpdateReadme {
       }else line
     }.mkString("", "\n", "\n")
     IO.write(readmeFile, newReadme)
-    val git = new Git(extracted get baseDirectory)
+    val git = new Git(extracted.get(baseDirectory))
     git.add(readme) ! state.log
     git.commit(message = "update " + readme, sign = false, signOff = false) ! state.log
     sys.process.Process("git diff HEAD^") ! state.log
