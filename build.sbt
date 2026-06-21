@@ -46,9 +46,7 @@ licenses := Seq("MIT License" -> url("http://www.opensource.org/licenses/mit-lic
 scalacOptions ++= (
   "-deprecation" ::
   "-unchecked" ::
-  "-Xlint" ::
   "-language:existentials" ::
-  "-language:higherKinds" ::
   "-language:implicitConversions" ::
   Nil
 )
